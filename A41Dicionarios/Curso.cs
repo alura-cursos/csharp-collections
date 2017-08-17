@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A33EqualsEHashCode
+namespace A41Dicionarios
 {
     /// <summary>
     /// Representa um curso, com Nome, Instrutor e Aulas
     /// </summary>
     class Curso
     {
+        //implementando um dicionário de alunos
+        private IDictionary<int, Aluno> dicionarioAlunos =
+            new Dictionary<int, Aluno>();
+
         //alunos deve ser um ISet. Alunos deve retornar ReadOnlyCollection
         ISet<Aluno> alunos = new HashSet<Aluno>();
 
@@ -63,6 +67,7 @@ namespace A33EqualsEHashCode
         internal void Matricula(Aluno aluno)
         {
             this.alunos.Add(aluno);
+            this.dicionarioAlunos.Add(aluno.NumeroMatricula, aluno);
         }
 
         public string Instrutor
@@ -115,6 +120,27 @@ namespace A33EqualsEHashCode
         public bool EstaMatriculado(Aluno aluno)
         {
             return alunos.Contains(aluno);
+        }
+
+        /// <summary>
+        /// Obtém o aluno a partir do número de matrícula
+        /// </summary>
+        /// <param name="numeroMatricula">O número de matrícula</param>
+        /// <returns>Aluno encontrado, ou null caso não seja encontrado</returns>
+        internal Aluno BuscaMatriculado(int numeroMatricula)
+        {
+            Aluno aluno = null;
+            this.dicionarioAlunos.TryGetValue(numeroMatricula, out aluno);
+            return aluno;
+        }
+
+        /// <summary>
+        /// Modifica o valor do aluno existente com a chave (número de matrícula)
+        /// </summary>
+        /// <param name="aluno">Dados do aluno atualizados</param>
+        internal void SubstituiAluno(Aluno aluno)
+        {
+            this.dicionarioAlunos[aluno.NumeroMatricula] = aluno;
         }
     }
 }

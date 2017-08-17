@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace A33EqualsEHashCode
+namespace A41Dicionarios
 {
     /// <summary>
     /// Representa uma aula, com Titulo e Tempo

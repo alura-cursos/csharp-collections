@@ -127,10 +127,7 @@ namespace A21Listas
 
             //Método ForEach: 
             //Executa uma ação (Action) para cada elemento do array
-            aulas.ForEach(aula => 
-            {
-                Console.WriteLine(aula);
-            });
+            aulas.ForEach(aula => Console.WriteLine(aula));
             Console.WriteLine();
         }
     }
